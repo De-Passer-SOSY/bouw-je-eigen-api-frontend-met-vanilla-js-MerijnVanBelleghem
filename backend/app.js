@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./services/db');
+const fs = require('fs');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./services/swagger.json')
 
 const app = express();
 app.use(cors());
@@ -83,6 +86,8 @@ app.delete("/deletePiano/:id", async (req, res) => {
        res.status(500).json({message:"Interne serverfout"});
    }
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(3333, () => {
    console.log("Server gestart op: http://localhost:3333/");

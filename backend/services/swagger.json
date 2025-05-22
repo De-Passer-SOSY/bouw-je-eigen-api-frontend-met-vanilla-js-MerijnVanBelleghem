@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Piano's API",
+    "version": "1.0.0",
+    "description": "Een eenvoudige API voor piano's"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333"
+    }
+  ],
+  "paths": {
+    "/pianos": {
+      "get": {
+        "summary": "Toon alle piano's",
+        "responses": {
+          "200": {
+            "description": "Lijst van alle piano's"
+          }
+        }
+      }
+    }, "/piano/{id}": {
+      "get": {
+        "summary": "Toon één piano",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Piano gevonden"
+          },
+          "404": {
+            "description": "Piano niet gevonden"
+          }
+        }
+      }
+    }, "/newPiano": {
+      "post": {
+        "summary": "Voeg een piano toe",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "bouwjaar": {
+                    "type": "integer"
+                  },
+                  "prijs": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Piano toegevoegd"
+          }
+        }
+      }
+    },     "/updatePiano/{id}": {
+      "put": {
+        "summary": "Wijzig een piano",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "bouwjaar": {
+                    "type": "integer"
+                  },
+                  "prijs": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Afwezigheid bijgewerkt"
+          }
+        }
+      }
+    },     "/deletePiano/{id}": {
+      "delete": {
+        "summary": "Verwijder een piano",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verwijderd"
+          },
+          "404": {
+            "description": "Niet gevonden"
+          }
+        }
+      }
+    }
+  }
+}
