@@ -111,3 +111,16 @@ function editPiano(id){
     console.log("Fout bij bewerken van piano", error);
     }
 }
+
+function deletePiano(id){
+    try{
+        fetch(`http://localhost:3333/deletePiano/${id}`, {method: 'DELETE'})
+            .then(() => {
+                showAlert('Piano verwijderd', 'success');
+                fetchPianos();
+            })
+            .catch(() => showAlert('Verwijderen mislukt.', 'error'));
+    }catch (error){
+        console.log("Fout bij verwijderen van piano", error);
+    }
+}
