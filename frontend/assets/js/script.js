@@ -32,3 +32,32 @@ async function fetchPianos(){
         console.log("Fout bij ophalen van API: ", error)
     }
 }
+
+function displayPianos(pianos){
+    try {
+        const list = document.getElementById("pianos-list");
+        list.innerHTML = '';
+
+        pianos.forEach(piano => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${piano.merk}</td>
+            <td>${piano.model}</td>
+            <td>${piano.type}</td>
+            <td>${piano.bouwjaar}</td>
+            <td>${piano.prijs}</td>
+            <td>
+                <button class="edit-btn" data-id="${piano.id}">Wijzig</button>
+                <button class="delete-btn" data-id="${piano.id}">Verwijder</button>
+            </td>
+            `;
+
+            row.querySelector('.edit-btn').addEventListener('click', () => editPiano(piano.id));
+            row.querySelector('.delete-btn').addEventListener('click', () => deletePiano(piano.id));
+
+            list.appendChild(row);
+        });
+    } catch (error) {
+        console.log("Fout bij tonen van piano's", error);
+    }
+}
