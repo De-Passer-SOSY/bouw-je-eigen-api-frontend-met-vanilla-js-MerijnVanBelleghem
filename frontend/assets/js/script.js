@@ -130,3 +130,10 @@ function resetForm(){
     document.getElementById('piano-form').reset();
 }
 
+function showAlert(message, type = 'success'){
+    const alertBox = document.getElementById("alert");
+    alertBox.textContent = message;
+    alertBox.className = `alert ${type}`;
+    alertBox.classList.remove('hidden');
+    setTimeout(() => alertBox.classList.add('hidden', 3000))
+}
