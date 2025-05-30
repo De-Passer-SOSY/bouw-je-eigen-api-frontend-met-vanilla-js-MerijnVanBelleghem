@@ -20,3 +20,15 @@ function init(){
     });
     form.addEventListener('submit', handleFormSubmit);
 }
+
+async function fetchPianos(){
+    try {
+        const response = await fetch('http://localhost:3333/pianos')
+        const data = await response.json()
+        console.log("piano data opgehaald")
+
+        displayPianos(data)
+    }catch(error){
+        console.log("Fout bij ophalen van API: ", error)
+    }
+}
