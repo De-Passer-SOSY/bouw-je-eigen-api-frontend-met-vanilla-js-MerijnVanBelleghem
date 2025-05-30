@@ -124,3 +124,9 @@ function deletePiano(id){
         console.log("Fout bij verwijderen van piano", error);
     }
 }
+
+function resetForm(){
+    document.getElementById('piano-id').value = '';
+    document.getElementById('piano-form').reset();
+}
+
