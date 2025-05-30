@@ -61,3 +61,34 @@ function displayPianos(pianos){
         console.log("Fout bij tonen van piano's", error);
     }
 }
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const id = document.getElementById('piano-id').value;
+    const piano = {
+        merk: document.getElementById('merk').value,
+        model: document.getElementById('merk').value,
+        type: document.getElementById('merk').value,
+        bouwjaar: document.getElementById('merk').value,
+        prijs: document.getElementById('merk').value
+    };
+
+    const method = id ? 'PUT' : 'POST';
+    const url = id
+        ? `http://localhost:3333/updatePiano/${id}`
+        : 'http://localhost:3333/newPiano';
+
+    fetch(url, {
+        method,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(piano)
+    })
+        .then(() => {
+            showAlert(id ? 'Piano bijgewerkt' : 'Piano toegevoegd', 'success');
+            resetForm();
+            fetchPianos();
+            document.getElementById('form-wrapper').classList.add('hidden');
+        })
+        .catch(() => showAlert('Er ging iets mis.', 'error'));
+}
