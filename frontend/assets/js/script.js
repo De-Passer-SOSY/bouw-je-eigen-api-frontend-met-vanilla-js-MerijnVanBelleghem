@@ -92,3 +92,22 @@ function handleFormSubmit(e) {
         })
         .catch(() => showAlert('Er ging iets mis.', 'error'));
 }
+
+function editPiano(id){
+    try {
+        fetch(`http://localhost:3333/piano/${id}`)
+            .then( res => res.json())
+            .then(piano => {
+                document.getElementById('pianos-id').value = piano.id;
+                document.getElementById('merk').value = piano.merk;
+                document.getElementById('model').value = piano.model;
+                document.getElementById('type').value = piano.type;
+                document.getElementById('bouwjaar').value = piano.bouwjaar;
+                document.getElementById('prijs').value = piano.prijs;
+                document.getElementById('form-wrapper').classlist.remove('hidden');
+                document.getElementById('piano-form').scrollIntoView({behavior: 'smooth'});
+            })
+    } catch(error){
+    console.log("Fout bij bewerken van piano", error);
+    }
+}
