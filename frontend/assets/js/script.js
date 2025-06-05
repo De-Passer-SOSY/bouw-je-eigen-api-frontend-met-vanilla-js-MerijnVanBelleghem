@@ -14,9 +14,8 @@ function init(){
     // Functionaliteit voor formulier om nieuwe piano toe te voegen
     openFormBtn.addEventListener('click', () => {
         formWrapper.classList.remove('hidden');
-        formWrapper.scrollIntoView({behavior: 'smooth'});
+        form.scrollIntoView({behavior: 'smooth'});
         resetForm()
-
     });
     form.addEventListener('submit', handleFormSubmit);
 }
@@ -35,7 +34,7 @@ async function fetchPianos(){
 
 function displayPianos(pianos){
     try {
-        const list = document.getElementById("pianos-list");
+        const list = document.getElementById("piano-list");
         list.innerHTML = '';
 
         pianos.forEach(piano => {
@@ -68,10 +67,10 @@ function handleFormSubmit(e) {
     const id = document.getElementById('piano-id').value;
     const piano = {
         merk: document.getElementById('merk').value,
-        model: document.getElementById('merk').value,
-        type: document.getElementById('merk').value,
-        bouwjaar: document.getElementById('merk').value,
-        prijs: document.getElementById('merk').value
+        model: document.getElementById('model').value,
+        type: document.getElementById('type').value,
+        bouwjaar: document.getElementById('bouwjaar').value,
+        prijs: document.getElementById('prijs').value
     };
 
     const method = id ? 'PUT' : 'POST';
@@ -98,13 +97,13 @@ function editPiano(id){
         fetch(`http://localhost:3333/piano/${id}`)
             .then( res => res.json())
             .then(piano => {
-                document.getElementById('pianos-id').value = piano.id;
+                document.getElementById('piano-id').value = piano.id;
                 document.getElementById('merk').value = piano.merk;
                 document.getElementById('model').value = piano.model;
                 document.getElementById('type').value = piano.type;
                 document.getElementById('bouwjaar').value = piano.bouwjaar;
                 document.getElementById('prijs').value = piano.prijs;
-                document.getElementById('form-wrapper').classlist.remove('hidden');
+                document.getElementById('form-wrapper').classList.remove('hidden');
                 document.getElementById('piano-form').scrollIntoView({behavior: 'smooth'});
             })
     } catch(error){
@@ -135,5 +134,5 @@ function showAlert(message, type = 'success'){
     alertBox.textContent = message;
     alertBox.className = `alert ${type}`;
     alertBox.classList.remove('hidden');
-    setTimeout(() => alertBox.classList.add('hidden', 3000))
+    setTimeout(() => alertBox.classList.add('hidden'), 3000)
 }

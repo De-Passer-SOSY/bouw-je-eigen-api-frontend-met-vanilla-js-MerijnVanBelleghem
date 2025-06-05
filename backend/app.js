@@ -21,7 +21,7 @@ app.get("/pianos", async (req, res) => {
 app.get("/piano/:id", async (req, res) => {
     const {id} = req.params;
     try{
-        const piano = await db("pianos").where("id", id);
+        const piano = await db("pianos").where("id", id).first();
         if(piano){
             res.status(200).json(piano);
         } else {
