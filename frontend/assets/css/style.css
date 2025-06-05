@@ -1,0 +1,94 @@
+body {
+    font-family: "Yu Gothic UI", sans-serif;
+    background: #f8f9fa;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    margin: 1% 0 0 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #343a40;
+    margin: -0.6% -1% 0 -1%;
+    padding: 1%;
+    justify-content: center;
+}
+
+nav > a {
+    text-decoration: none;
+    text-underline: none;
+    margin: 0 2% 0 2%;
+    color: #adb5bd;
+    transition: ease-in-out 0.25s;
+    padding: 0.4%;
+}
+
+nav > a:hover {
+    color: #dee2e6;
+    text-decoration-line: underline;
+    border: 1px solid #dee2e6;
+}
+
+.form-section {
+    width: 25%;
+    margin: 1.5% 0 0 10%;
+}
+
+.save-btn, #open-form-btn {
+    border: none;
+    border-radius: 10%;
+    padding: 3%;
+    font-family: "Yu Gothic UI Light", "Helvetica Neue", Arial, sans-serif;
+    background: #007dff;
+    color: white;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.edit-btn {
+    background-color: #FFA500;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #ff3939;
+    color: white;
+}
+
+input {
+    padding: 5%;
+    border: none;
+    background: #ffffff;
+}
+
+td > button {
+    border: none;
+    border-radius: 10%;
+    padding: 3%;
+    font-family: "Yu Gothic UI Light", "Helvetica Neue", Arial, sans-serif;
+}
+
+.table-section {
+    width: 80%;
+    margin: 1.5% 15% 0 15%;
+    display: flex;
+    align-items: center;
+}
+
+th, td {
+    padding: 1%;
+    text-align: center;
+}
+
+#piano-table tr:nth-child(even) {
+    background: #ffffff;
+}
+
+#piano-table {
+    border-collapse: collapse;
+    width: 100%;
+}
