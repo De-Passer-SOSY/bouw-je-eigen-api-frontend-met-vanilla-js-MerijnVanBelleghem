@@ -12,11 +12,6 @@ function init(){
     const openFormBtn = document.getElementById('open-form-btn');
 
     // Functionaliteit voor formulier om nieuwe piano toe te voegen
-    openFormBtn.addEventListener('click', () => {
-        formWrapper.classList.remove('hidden');
-        form.scrollIntoView({behavior: 'smooth'});
-        resetForm()
-    });
     form.addEventListener('submit', handleFormSubmit);
 }
 
@@ -72,7 +67,6 @@ function handleFormSubmit(e) {
         bouwjaar: document.getElementById('bouwjaar').value,
         prijs: document.getElementById('prijs').value
     };
-
     const method = id ? 'PUT' : 'POST';
     const url = id
         ? `http://localhost:3333/updatePiano/${id}`
@@ -86,6 +80,7 @@ function handleFormSubmit(e) {
         .then(() => {
             showAlert(id ? 'Piano bijgewerkt' : 'Piano toegevoegd', 'success');
             resetForm();
+            console.log(JSON.stringify(piano));
             fetchPianos();
             document.getElementById('form-wrapper').classList.add('hidden');
         })
@@ -127,6 +122,7 @@ function deletePiano(id){
 function resetForm(){
     document.getElementById('piano-id').value = '';
     document.getElementById('piano-form').reset();
+    console.log("form reset")
 }
 
 function showAlert(message, type = 'success'){

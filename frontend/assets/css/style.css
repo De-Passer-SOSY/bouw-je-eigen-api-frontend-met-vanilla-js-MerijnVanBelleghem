@@ -54,6 +54,11 @@ nav > a:hover {
     color: white;
 }
 
+.add-button-section {
+    display: flex;
+    justify-content: center;
+}
+
 .delete-btn {
     background-color: #ff3939;
     color: white;
@@ -73,7 +78,7 @@ td > button {
 }
 
 .table-section {
-    width: 80%;
+    width: 90%;
     margin: 1.5% 15% 0 15%;
     display: flex;
     align-items: center;
