@@ -7,57 +7,60 @@
 </head>
 <body>
 <nav>
-<!--logo ofzo hier    <a></a>-->
-    <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="index.html" class="active">Afwezigheden</a></li>
-    </ul>
+    <a href="#">Home</a>
+    <a href="index.html" class="active">Piano's</a>
 </nav>
-<!--overbodige nav?-->
-
 <main>
-   <header>
-       <h1>Piano's database</h1>
-       <section id="alert" class="alert hidden" role="alert"></section>
-   </header>
+    <section class="form-section" id="form-wrapper" aria-label="Piano toevoegen of wijzigen">
+        <header>
+            <h1>Piano's database</h1>
+            <section id="alert" class="alert hidden" role="alert"></section>
+        </header>
 
-   <section class="form-section hidden" id="form-wrapper" aria-label="Piano toevoegen of wijzigen">
-       <form id="piano-form">
-           <input type="hidden" id="piano-id">
-           <section class="form-section">
-               <label for="merk">Merk</label>
-               <input type="text" id="merk" required>
-           </section>
-           <section class="form-section">
-               <label for="model">Model</label>
-               <input type="text" id="model" required>
-           </section>
-           <section class="form-section">
-               <label for="type">Type</label>
-               <input type="text" id="type" required>
-           </section>
-           <section class="form-section">
-               <label for="bouwjaar">Bouwjaar</label>
-               <input type="text" id="bouwjaar" required>
-           </section>
-           <section class="form-section">
-               <label for="prijs">Prijs</label>
-               <input type="text" id="prijs" required>
-           </section>
+        <form id="piano-form">
+            <input type="hidden" id="piano-id">
+            <section class="form-section">
+                <label for="merk">Merk</label>
+                <input type="text" id="merk" required>
+            </section>
+            <section class="form-section">
+                <label for="model">Model</label>
+                <input type="text" id="model" required>
+            </section>
+            <section class="form-section">
+                <label for="type">Type</label>
+                <input type="text" id="type" required>
+            </section>
+            <section class="form-section">
+                <label for="bouwjaar">Bouwjaar</label>
+                <input type="text" id="bouwjaar" required>
+            </section>
+            <section class="form-section">
+                <label for="prijs">Prijs</label>
+                <input type="text" id="prijs" required>
+            </section>
+            <section class="add-button-section" aria-label="Piano toevoegen">
                 <button type="submit" class="save-btn">Opslaan</button>
-       </form>
-   </section>
 
-    <section class="add-button-section" aria-label="Piano toevoegen">
-        <button id="add-button" class="add-btn">+</button>
+                <button id="open-form-btn" class="open-form">Voeg een piano toe</button>
+            </section>
+        </form>
     </section>
-
-
+    <section class="table-section" aria-label="Overzicht piano's">
+        <table id="piano-table">
+            <thead>
+            <tr>
+                <th scope="col">Merk</th>
+                <th scope="col">Model</th>
+                <th scope="col">Type</th>
+                <th scope="col">Bouwjaar</th>
+                <th scope="col">Prijs</th>
+            </tr>
+            </thead>
+            <tbody id="piano-list"></tbody>
+        </table>
+    </section>
 </main>
-
-
-
-
 
 
 <script src="assets/js/script.js"></script>
